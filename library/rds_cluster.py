@@ -28,6 +28,8 @@ options:
       - Used when creating a new cluster or restoring from snapshot.
     choices:
       - aurora
+      - aurora-mysql
+      - aurora-postgresql
     default: aurora
   engine_version:
     description:
@@ -240,7 +242,7 @@ def main():
         availability_zones=dict(type='list', required=False),
         cluster_id=dict(required=True),
         database_name=dict(required=False),
-        engine=dict(required=False, choices=['aurora'], default='aurora'),
+        engine=dict(required=False, choices=['aurora', 'aurora-mysql', 'aurora-postgresql'], default='aurora'),
         engine_version=dict(required=False),
         master_username=dict(required=False),
         master_password=dict(required=False, no_log=True),

@@ -69,6 +69,8 @@ options:
       - Used when state=present and instance does not exist.
     choices:
         - aurora
+        - aurora-mysql
+        - aurora-postgresql
     required: false
     default: aurora
   instance_id:
@@ -341,7 +343,7 @@ def main():
         cloudwatch_logs_exports = dict(required=False, default=None),
         cluster_id = dict(required=False),
         copy_tags_to_snapshot = dict(required=False, type='bool', default=True),
-        engine = dict(required=False, choices=['aurora'], default='aurora'),
+        engine = dict(required=False, choices=['aurora', 'aurora-mysql', 'aurora-postgresql'], default='aurora'),
         instance_id = dict(required=True),
         instance_type = dict(required=False),
         monitoring_interval = dict(required=False, type='int', default=0, choices=[0, 1, 5, 10, 15, 30, 60]),
